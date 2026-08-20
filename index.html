@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hocicos Felices Córdoba · Sitio en construcción</title>
+  <meta name="description" content="Estamos construyendo el hogar digital de Hocicos Felices Córdoba. Pronto vas a poder conocer a los perros y gatos en adopción." />
+
+  <!-- Vista previa al compartir el link (WhatsApp, Instagram, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hocicos Felices Córdoba" />
+  <meta property="og:description" content="Estamos preparando el lugar. Pronto vas a poder conocer a los animales en adopción." />
+  <meta property="og:url" content="https://hocicosfelices.com.ar" />
+  <meta property="og:image" content="https://hocicosfelices.com.ar/logo.png" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --celeste: #6BCBEF;
+      --celeste-deep: #38A7D6;
+      --celeste-tint: #EAF6FD;
+      --navy: #2E4767;
+      --navy-deep: #223651;
+      --white: #FFFFFF;
+      --line: rgba(46, 71, 103, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    body {
+      min-height: 100dvh;
+      font-family: "Instrument Sans", system-ui, sans-serif;
+      color: var(--navy);
+      background:
+        radial-gradient(130% 85% at 50% -15%, var(--celeste-tint) 0%, #FFFFFF 55%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* --- Rastro de huellas --- */
+    .paws { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .paw {
+      position: absolute; width: 28px; height: 28px; opacity: 0;
+      color: var(--celeste); animation: paw-in 9s linear infinite;
+    }
+    .paw svg { width: 100%; height: 100%; display: block; }
+    @keyframes paw-in {
+      0% { opacity: 0; } 6% { opacity: 0.5; } 55% { opacity: 0.5; }
+      70% { opacity: 0; } 100% { opacity: 0; }
+    }
+
+    /* --- Contenido --- */
+    .card { position: relative; z-index: 1; width: 100%; max-width: 640px; text-align: center; }
+
+    .logo {
+      width: clamp(190px, 42vw, 260px);
+      height: auto;
+      margin: 0 auto 30px;
+      display: block;
+      filter: drop-shadow(0 12px 24px rgba(56, 167, 214, 0.22));
+      animation: float 5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .eyebrow {
+      font-family: "Fredoka", sans-serif;
+      font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 600; color: var(--celeste-deep); margin-bottom: 20px;
+    }
+    .eyebrow .dot { color: var(--navy); }
+
+    h1 {
+      font-family: "Fredoka", sans-serif; font-weight: 700;
+      font-size: clamp(2.5rem, 8.5vw, 4.3rem);
+      line-height: 1.02; letter-spacing: -0.01em; color: var(--navy); margin-bottom: 22px;
+    }
+    h1 .accent { color: var(--celeste-deep); }
+
+    .lead {
+      font-size: clamp(1.05rem, 2.6vw, 1.24rem); line-height: 1.62;
+      color: #55677D; max-width: 47ch; margin: 0 auto 40px;
+    }
+
+    /* --- Barra "en obra" --- */
+    .progress { max-width: 340px; margin: 0 auto 42px; }
+    .progress-track {
+      height: 9px; border-radius: 99px; background: var(--celeste-tint);
+      overflow: hidden; box-shadow: inset 0 0 0 1px var(--line);
+    }
+    .progress-fill {
+      height: 100%; width: 62%; border-radius: 99px;
+      background: linear-gradient(90deg, var(--celeste), var(--navy));
+      background-size: 200% 100%; animation: shift 3.5s ease-in-out infinite;
+    }
+    @keyframes shift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    .progress-label {
+      margin-top: 12px; font-family: "Fredoka", sans-serif;
+      font-size: 0.85rem; font-weight: 500; color: var(--celeste-deep);
+    }
+
+    /* --- Contacto --- */
+    .contact { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 13px 22px; border-radius: 99px;
+      font-family: "Fredoka", sans-serif; font-weight: 500; font-size: 0.98rem;
+      text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .chip svg { width: 18px; height: 18px; }
+    .chip--primary {
+      background: var(--navy); color: #fff;
+      box-shadow: 0 10px 22px -8px rgba(34, 54, 81, 0.55);
+    }
+    .chip--ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 2px var(--celeste); }
+    .chip:hover { transform: translateY(-2px); }
+    .chip:focus-visible { outline: 3px solid var(--celeste-deep); outline-offset: 3px; }
+
+    footer { margin-top: 48px; font-size: 0.82rem; color: #6B7A8D; }
+    footer strong { color: var(--navy); font-weight: 600; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .paw, .logo, .progress-fill { animation: none; }
+      .paw { opacity: 0.35; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="paws" aria-hidden="true">
+    <div class="paw" style="top:15%; left:8%;  animation-delay:0s;"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="8" r="2.1"/><circle cx="11" cy="5.5" r="2.1"/><circle cx="16.5" cy="7" r="2.1"/><path d="M12 11c-3 0-5 2.4-5 4.6 0 1.8 1.6 2.6 3 2.2 1.2-.4 2.8-.4 4 0 1.4.4 3-.4 3-2.2C17 13.4 15 11 12 11z"/></svg></div>
+    <div class="paw" style="top:70%; left:15%; animation-delay:3s;"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="8" r="2.1"/><circle cx="11" cy="5.5" r="2.1"/><circle cx="16.5" cy="7" r="2.1"/><path d="M12 11c-3 0-5 2.4-5 4.6 0 1.8 1.6 2.6 3 2.2 1.2-.4 2.8-.4 4 0 1.4.4 3-.4 3-2.2C17 13.4 15 11 12 11z"/></svg></div>
+    <div class="paw" style="top:22%; right:9%; animation-delay:1.5s;"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="8" r="2.1"/><circle cx="11" cy="5.5" r="2.1"/><circle cx="16.5" cy="7" r="2.1"/><path d="M12 11c-3 0-5 2.4-5 4.6 0 1.8 1.6 2.6 3 2.2 1.2-.4 2.8-.4 4 0 1.4.4 3-.4 3-2.2C17 13.4 15 11 12 11z"/></svg></div>
+    <div class="paw" style="top:78%; right:13%; animation-delay:5s;"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="8" r="2.1"/><circle cx="11" cy="5.5" r="2.1"/><circle cx="16.5" cy="7" r="2.1"/><path d="M12 11c-3 0-5 2.4-5 4.6 0 1.8 1.6 2.6 3 2.2 1.2-.4 2.8-.4 4 0 1.4.4 3-.4 3-2.2C17 13.4 15 11 12 11z"/></svg></div>
+    <div class="paw" style="top:45%; left:5%;  animation-delay:6.5s;"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="8" r="2.1"/><circle cx="11" cy="5.5" r="2.1"/><circle cx="16.5" cy="7" r="2.1"/><path d="M12 11c-3 0-5 2.4-5 4.6 0 1.8 1.6 2.6 3 2.2 1.2-.4 2.8-.4 4 0 1.4.4 3-.4 3-2.2C17 13.4 15 11 12 11z"/></svg></div>
+  </div>
+
+  <main class="card">
+    <img class="logo" src="logo.png" alt="Hocicos Felices Córdoba" />
+
+    <p class="eyebrow">Asociación Civil <span class="dot">·</span> Córdoba</p>
+
+    <h1>Estamos preparando <span class="accent">el lugar.</span></h1>
+
+    <p class="lead">
+      Con el mismo cuidado con el que rescatamos, estamos armando el hogar digital de la asociación. Muy pronto vas a poder conocer acá a los perros y gatos que buscan familia.
+    </p>
+
+    <div class="progress" aria-hidden="true">
+      <div class="progress-track"><div class="progress-fill"></div></div>
+      <p class="progress-label">Sitio en construcción</p>
+    </div>
+
+    <nav class="contact" aria-label="Contacto">
+      <!-- ⬇️ REEMPLAZAR por el usuario real de Instagram -->
+      <a class="chip chip--primary" href="https://instagram.com/hocicosfelices" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+        Seguinos en Instagram
+      </a>
+      <!-- ⬇️ REEMPLAZAR por el email de contacto real -->
+      <a class="chip chip--ghost" href="mailto:contacto@hocicosfelices.com.ar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        Escribinos
+      </a>
+    </nav>
+
+    <footer>
+      <strong>Adoptar es un acto de amor y responsabilidad.</strong><br />
+      Córdoba, Argentina
+    </footer>
+  </main>
+
+</body>
+</html>
