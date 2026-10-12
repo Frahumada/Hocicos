@@ -1,186 +1,458 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es-AR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hocicos Felices Córdoba · Sitio en construcción</title>
-  <meta name="description" content="Estamos construyendo el hogar digital de Hocicos Felices Córdoba. Pronto vas a poder conocer a los perros y gatos en adopción." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tienda solidaria · Hocicos Felices Córdoba</title>
+<meta name="description" content="Collares, pecheras, ropa y accesorios para perros y gatos. Cada compra ayuda a los rescates de Hocicos Felices Córdoba.">
 
-  <!-- Vista previa al compartir el link (WhatsApp, Instagram, etc.) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Hocicos Felices Córdoba" />
-  <meta property="og:description" content="Estamos preparando el lugar. Pronto vas a poder conocer a los animales en adopción." />
-  <meta property="og:url" content="https://hocicosfelices.com.ar" />
-  <meta property="og:image" content="https://hocicosfelices.com.ar/logo.png" />
+<!-- Vista previa al compartir el link (WhatsApp, Instagram, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tienda solidaria · Hocicos Felices Córdoba">
+<meta property="og:description" content="Todo para tu compañero, y cada compra ayuda a un rescate.">
+<meta property="og:url" content="https://hocicosfelices.com.ar">
+<meta property="og:image" content="https://hocicosfelices.com.ar/logo.png">
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --celeste:#6BCBEF; --celeste-deep:#38A7D6; --celeste-claro:#EAF6FD; --navy:#2E4767; --navy-2:#3E5B80;
+    --bg:#F7FBFD; --card:#FFFFFF; --texto:#1F2F44; --suave:#5D6F86; --borde:#DCEAF1;
+    --ok:#25D366; --radio:18px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:"Instrument Sans",system-ui,sans-serif;background:var(--bg);color:var(--texto);line-height:1.4}
+  img{max-width:100%;display:block}
+  button{font-family:"Fredoka",sans-serif;cursor:pointer}
+  h1,h2,h3,h4,.marca,.precio,.total,.chip,.paso,.badge{font-family:"Fredoka",sans-serif}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  /* Header */
+  header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--borde)}
+  .bar{display:flex;align-items:center;gap:12px;height:68px}
+  .marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:700;font-size:1.15rem}
+  .marca img{width:44px;height:44px;object-fit:contain}
+  .marca small{display:block;font-weight:500;font-size:.75rem;color:var(--suave)}
+  .esp{flex:1}
+  .btn-carrito{position:relative;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:10px 16px;font-size:1rem;font-weight:600;display:flex;align-items:center;gap:8px}
+  .btn-carrito .n{background:var(--celeste);color:var(--navy);border-radius:999px;min-width:22px;height:22px;display:inline-grid;place-items:center;font-size:.8rem;padding:0 6px}
 
-  <style>
-    :root {
-      --celeste: #6BCBEF;
-      --celeste-deep: #38A7D6;
-      --celeste-tint: #EAF6FD;
-      --navy: #2E4767;
-      --navy-deep: #223651;
-      --white: #FFFFFF;
-      --line: rgba(46, 71, 103, 0.12);
-    }
+  /* Hero */
+  .hero{background:radial-gradient(130% 120% at 50% -20%,var(--celeste-claro) 0%,#fff 60%);border-bottom:1px solid var(--borde)}
+  .hero .wrap{padding-top:36px;padding-bottom:32px}
+  .hero h1{margin:0 0 10px;color:var(--navy);font-weight:700;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.15}
+  .hero p{margin:0;color:var(--suave);max-width:620px;font-size:1.05rem;line-height:1.55}
+  .hero h1 .accent{color:var(--celeste-deep)}
+  .eyebrow{font-family:"Fredoka",sans-serif;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--celeste-deep);margin:0 0 10px}
+  .pasos{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .paso{background:#fff;border:1px solid var(--borde);border-radius:999px;padding:6px 14px;font-size:.9rem;color:var(--navy)}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
+  /* Filtros */
+  .filtros{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:24px 0 16px}
+  .buscar{flex:1 1 220px;border:1px solid var(--borde);border-radius:999px;padding:11px 16px;font:inherit;background:#fff;min-width:0}
+  .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;max-width:100%}
+  .chip{white-space:nowrap;border:1px solid var(--borde);background:#fff;color:var(--navy);border-radius:999px;padding:8px 14px;font-size:.95rem}
+  .chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
 
-    body {
-      min-height: 100dvh;
-      font-family: "Instrument Sans", system-ui, sans-serif;
-      color: var(--navy);
-      background:
-        radial-gradient(130% 85% at 50% -15%, var(--celeste-tint) 0%, #FFFFFF 55%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 24px;
-      overflow-x: hidden;
-      position: relative;
-    }
+  /* Grilla */
+  .grilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:48px}
+  .prod{background:var(--card);border:1px solid var(--borde);border-radius:var(--radio);overflow:hidden;display:flex;flex-direction:column}
+  .foto{aspect-ratio:1/1;background:var(--celeste-claro);display:grid;place-items:center;position:relative}
+  .foto img{width:100%;height:100%;object-fit:cover}
+  .foto .sin{font-size:2.6rem;opacity:.5}
+  .badge{position:absolute;top:10px;left:10px;background:var(--navy);color:#fff;font-size:.75rem;border-radius:999px;padding:4px 10px}
+  .badge.agotado{background:#8A96A5}
+  .info{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .info h3{margin:0;font-size:1.05rem;color:var(--navy);font-weight:600}
+  .info .cat{font-size:.8rem;color:var(--suave)}
+  .info .desc{font-size:.9rem;color:var(--suave);margin:0}
+  .opciones{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+  .opciones:empty{display:block}
+  .opt{flex:1 1 40%;display:flex;flex-direction:column;gap:3px;font-size:.78rem;color:var(--suave);min-width:0}
+  .opt .fijo{padding:8px 0;font-size:.95rem;font-weight:600;color:var(--texto)}
+  .opt select{width:100%;border:1px solid var(--borde);border-radius:10px;padding:8px;font:inherit;font-size:.9rem;color:var(--texto);background:#fff}
+  .precio{font-size:1.25rem;font-weight:700;color:var(--navy)}
+  .item .var{display:block;font-size:.8rem;color:var(--suave)}
+  .acciones{display:flex;gap:8px}
+  .btn{border:0;border-radius:12px;padding:10px 12px;font-size:.95rem;font-weight:600}
+  .btn-add{flex:1;background:var(--celeste);color:var(--navy)}
+  .btn-add:disabled{background:#E5EAF0;color:#8A96A5;cursor:not-allowed}
+  .btn-ws{background:#fff;border:1px solid var(--borde);color:var(--navy)}
+  .vacio{grid-column:1/-1;text-align:center;color:var(--suave);padding:40px 0}
 
-    /* --- Rastro de huellas --- */
-    .paws { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-    .paw {
-      position: absolute; width: 28px; height: 28px; opacity: 0;
-      color: var(--celeste); animation: paw-in 9s linear infinite;
-    }
-    .paw svg { width: 100%; height: 100%; display: block; }
-    @keyframes paw-in {
-      0% { opacity: 0; } 6% { opacity: 0.5; } 55% { opacity: 0.5; }
-      70% { opacity: 0; } 100% { opacity: 0; }
-    }
+  /* Carrito */
+  .velo{position:fixed;inset:0;background:rgba(20,30,45,.4);opacity:0;pointer-events:none;transition:.2s;z-index:30}
+  .velo.on{opacity:1;pointer-events:auto}
+  .panel{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;z-index:40;transform:translateX(100%);transition:.25s;display:flex;flex-direction:column}
+  .panel.on{transform:none}
+  .panel-h{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid var(--borde)}
+  .panel-h h2{margin:0;color:var(--navy);font-size:1.25rem}
+  .cerrar{background:none;border:0;font-size:1.6rem;color:var(--navy);line-height:1}
+  .items{flex:1;overflow:auto;padding:8px 16px}
+  .item{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--borde)}
+  .item img,.item .mini{width:56px;height:56px;border-radius:10px;object-fit:cover;background:var(--celeste-claro);display:grid;place-items:center}
+  .item h4{margin:0;font-size:.95rem;color:var(--navy);font-weight:600}
+  .item .p{font-size:.85rem;color:var(--suave)}
+  .cant{display:flex;align-items:center;gap:6px}
+  .cant button{width:28px;height:28px;border-radius:8px;border:1px solid var(--borde);background:#fff;color:var(--navy);font-size:1rem}
+  .panel-f{border-top:1px solid var(--borde);padding:16px;display:flex;flex-direction:column;gap:10px}
+  .total{display:flex;justify-content:space-between;font-size:1.15rem;font-weight:700;color:var(--navy)}
+  .panel-f label{font-size:.85rem;color:var(--suave)}
+  .panel-f input,.panel-f select{width:100%;border:1px solid var(--borde);border-radius:10px;padding:10px;font:inherit;margin-top:4px}
+  .btn-pedir{background:var(--ok);color:#fff;border:0;border-radius:14px;padding:14px;font-size:1.05rem;font-weight:700}
+  .btn-pedir:disabled{opacity:.5;cursor:not-allowed}
+  .nota{font-size:.8rem;color:var(--suave);text-align:center;margin:0}
 
-    /* --- Contenido --- */
-    .card { position: relative; z-index: 1; width: 100%; max-width: 640px; text-align: center; }
-
-    .logo {
-      width: clamp(190px, 42vw, 260px);
-      height: auto;
-      margin: 0 auto 30px;
-      display: block;
-      filter: drop-shadow(0 12px 24px rgba(56, 167, 214, 0.22));
-      animation: float 5s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .eyebrow {
-      font-family: "Fredoka", sans-serif;
-      font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase;
-      font-weight: 600; color: var(--celeste-deep); margin-bottom: 20px;
-    }
-    .eyebrow .dot { color: var(--navy); }
-
-    h1 {
-      font-family: "Fredoka", sans-serif; font-weight: 700;
-      font-size: clamp(2.5rem, 8.5vw, 4.3rem);
-      line-height: 1.02; letter-spacing: -0.01em; color: var(--navy); margin-bottom: 22px;
-    }
-    h1 .accent { color: var(--celeste-deep); }
-
-    .lead {
-      font-size: clamp(1.05rem, 2.6vw, 1.24rem); line-height: 1.62;
-      color: #55677D; max-width: 47ch; margin: 0 auto 40px;
-    }
-
-    /* --- Barra "en obra" --- */
-    .progress { max-width: 340px; margin: 0 auto 42px; }
-    .progress-track {
-      height: 9px; border-radius: 99px; background: var(--celeste-tint);
-      overflow: hidden; box-shadow: inset 0 0 0 1px var(--line);
-    }
-    .progress-fill {
-      height: 100%; width: 62%; border-radius: 99px;
-      background: linear-gradient(90deg, var(--celeste), var(--navy));
-      background-size: 200% 100%; animation: shift 3.5s ease-in-out infinite;
-    }
-    @keyframes shift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-    .progress-label {
-      margin-top: 12px; font-family: "Fredoka", sans-serif;
-      font-size: 0.85rem; font-weight: 500; color: var(--celeste-deep);
-    }
-
-    /* --- Contacto --- */
-    .contact { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-    .chip {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 13px 22px; border-radius: 99px;
-      font-family: "Fredoka", sans-serif; font-weight: 500; font-size: 0.98rem;
-      text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-    .chip svg { width: 18px; height: 18px; }
-    .chip--primary {
-      background: var(--navy); color: #fff;
-      box-shadow: 0 10px 22px -8px rgba(34, 54, 81, 0.55);
-    }
-    .chip--ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 2px var(--celeste); }
-    .chip:hover { transform: translateY(-2px); }
-    .chip:focus-visible { outline: 3px solid var(--celeste-deep); outline-offset: 3px; }
-
-    footer { margin-top: 48px; font-size: 0.82rem; color: #6B7A8D; }
-    footer strong { color: var(--navy); font-weight: 600; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .paw, .logo, .progress-fill { animation: none; }
-      .paw { opacity: 0.35; }
-    }
-  </style>
+  footer{background:var(--navy);color:#DCE8F3;padding:28px 0;font-size:.9rem}
+  footer a{color:#fff}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--navy);color:#fff;padding:10px 18px;border-radius:999px;transition:.25s;z-index:50;font-size:.95rem}
+  .toast.on{transform:translateX(-50%) translateY(0)}
+  @media (max-width:480px){ .marca small{display:none} .btn-carrito .txt{display:none} }
+</style>
 </head>
 <body>
 
-  <div class="paws" aria-hidden="true">
-    <div class="paw" style="top:15%; left:8%;  animation-delay:0s;"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="8" r="2.1"/><circle cx="11" cy="5.5" r="2.1"/><circle cx="16.5" cy="7" r="2.1"/><path d="M12 11c-3 0-5 2.4-5 4.6 0 1.8 1.6 2.6 3 2.2 1.2-.4 2.8-.4 4 0 1.4.4 3-.4 3-2.2C17 13.4 15 11 12 11z"/></svg></div>
-    <div class="paw" style="top:70%; left:15%; animation-delay:3s;"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="8" r="2.1"/><circle cx="11" cy="5.5" r="2.1"/><circle cx="16.5" cy="7" r="2.1"/><path d="M12 11c-3 0-5 2.4-5 4.6 0 1.8 1.6 2.6 3 2.2 1.2-.4 2.8-.4 4 0 1.4.4 3-.4 3-2.2C17 13.4 15 11 12 11z"/></svg></div>
-    <div class="paw" style="top:22%; right:9%; animation-delay:1.5s;"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="8" r="2.1"/><circle cx="11" cy="5.5" r="2.1"/><circle cx="16.5" cy="7" r="2.1"/><path d="M12 11c-3 0-5 2.4-5 4.6 0 1.8 1.6 2.6 3 2.2 1.2-.4 2.8-.4 4 0 1.4.4 3-.4 3-2.2C17 13.4 15 11 12 11z"/></svg></div>
-    <div class="paw" style="top:78%; right:13%; animation-delay:5s;"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="8" r="2.1"/><circle cx="11" cy="5.5" r="2.1"/><circle cx="16.5" cy="7" r="2.1"/><path d="M12 11c-3 0-5 2.4-5 4.6 0 1.8 1.6 2.6 3 2.2 1.2-.4 2.8-.4 4 0 1.4.4 3-.4 3-2.2C17 13.4 15 11 12 11z"/></svg></div>
-    <div class="paw" style="top:45%; left:5%;  animation-delay:6.5s;"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="8" r="2.1"/><circle cx="11" cy="5.5" r="2.1"/><circle cx="16.5" cy="7" r="2.1"/><path d="M12 11c-3 0-5 2.4-5 4.6 0 1.8 1.6 2.6 3 2.2 1.2-.4 2.8-.4 4 0 1.4.4 3-.4 3-2.2C17 13.4 15 11 12 11z"/></svg></div>
+<header>
+  <div class="wrap bar">
+    <a class="marca" href="./">
+      <img src="logo.png" alt="Hocicos Felices" onerror="this.style.display='none'">
+      <span>Hocicos Felices<small>Tienda solidaria</small></span>
+    </a>
+    <div class="esp"></div>
+    <button class="btn-carrito" id="abrirCarrito" aria-label="Ver pedido">
+      🛒 <span class="txt">Mi pedido</span> <span class="n" id="contador">0</span>
+    </button>
   </div>
+</header>
 
-  <main class="card">
-    <img class="logo" src="logo.png" alt="Hocicos Felices Córdoba" />
-
-    <p class="eyebrow">Asociación Civil <span class="dot">·</span> Córdoba</p>
-
-    <h1>Estamos preparando <span class="accent">el lugar.</span></h1>
-
-    <p class="lead">
-      Con el mismo cuidado con el que rescatamos, estamos armando el hogar digital de la asociación. Muy pronto vas a poder conocer acá a los perros y gatos que buscan familia.
-    </p>
-
-    <div class="progress" aria-hidden="true">
-      <div class="progress-track"><div class="progress-fill"></div></div>
-      <p class="progress-label">Sitio en construcción</p>
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Tienda solidaria · Córdoba</p>
+    <h1>Todo para tu compañero, <span class="accent">y cada compra ayuda a un rescate.</span></h1>
+    <p>Lo recaudado sostiene el alimento, las vacunas y los tratamientos de los perros y gatos rescatados por Hocicos Felices Córdoba.</p>
+    <div class="pasos">
+      <span class="paso">1. Elegí tus productos</span>
+      <span class="paso">2. Enviá el pedido por WhatsApp</span>
+      <span class="paso">3. Coordinamos pago y entrega</span>
     </div>
+  </div>
+</section>
 
-    <nav class="contact" aria-label="Contacto">
-      <!-- ⬇️ REEMPLAZAR por el usuario real de Instagram -->
-      <a class="chip chip--primary" href="https://instagram.com/hocicosfelicescba/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
-        Seguinos en Instagram
-      </a>
-      <!-- ⬇️ REEMPLAZAR por el email de contacto real -->
-      <a class="chip chip--ghost" href="mailto:hocicos.felices.info@gmail.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-        Escribinos
-      </a>
-    </nav>
+<main class="wrap">
+  <div class="filtros">
+    <input class="buscar" id="buscar" type="search" placeholder="Buscar producto…" aria-label="Buscar producto">
+    <div class="chips" id="chips"></div>
+  </div>
+  <div class="grilla" id="grilla"><div class="vacio">Cargando productos…</div></div>
+</main>
 
-    <footer>
-      <strong>Adoptar es un acto de amor y responsabilidad.</strong><br />
-      Córdoba, Argentina
-    </footer>
-  </main>
+<footer>
+  <div class="wrap">
+    <strong>Hocicos Felices Córdoba</strong> · Asociación Civil<br>
+    Instagram: <a href="https://instagram.com/hocicosfelicescba/" target="_blank" rel="noopener">@hocicosfelicescba</a>
+    · <a href="mailto:hocicos.felices.info@gmail.com">hocicos.felices.info@gmail.com</a><br>
+    <span style="opacity:.8">Muy pronto vas a poder conocer acá a los perros y gatos que buscan familia.</span>
+  </div>
+</footer>
 
+<div class="velo" id="velo"></div>
+<aside class="panel" id="panel" aria-label="Tu pedido">
+  <div class="panel-h">
+    <h2>Tu pedido</h2>
+    <button class="cerrar" id="cerrarCarrito" aria-label="Cerrar">×</button>
+  </div>
+  <div class="items" id="items"></div>
+  <div class="panel-f">
+    <div class="total"><span>Total</span><span id="total">$0</span></div>
+    <label>Tu nombre
+      <input id="nombre" type="text" autocomplete="name" placeholder="Para saber quién pide">
+    </label>
+    <label>Entrega
+      <select id="entrega">
+        <option value="Retiro">Retiro (coordinamos el punto)</option>
+        <option value="Envío">Envío (te pasamos el costo)</option>
+      </select>
+    </label>
+    <button class="btn-pedir" id="pedir">Enviar pedido por WhatsApp</button>
+    <p class="nota">No se cobra nada acá: el pago se coordina por WhatsApp.</p>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   CONFIGURACIÓN — lo único que hay que tocar
+   ============================================================ */
+const CONFIG = {
+  // ⬇️ REEMPLAZAR: número con código de país, sin +, sin espacios ni guiones.
+  // Córdoba celular: 549 + 351 + número  → ej. 5493511234567
+  whatsapp: "5493518094421",
+
+  // ⬇️ REEMPLAZAR: link CSV de la pestaña "web" de la planilla tienda_hocicos.
+  // En la planilla: Archivo → Compartir → Publicar en la Web →
+  //   en "Vínculo" elegir la hoja "web" (NO "Todo el documento") → formato CSV → Publicar.
+  // El link termina en "...output=csv". Si queda vacío, usa productos.csv (sólo para pruebas).
+  sheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS6DPl-G23hDKVB6aVRQrUm8o8ucqEc3ozhcGrBXLPet4IDJEX-PzETbFXNVozdqRR7iFS9OUYd2CBb/pub?gid=1830389787&single=true&output=csv",
+  csvLocal: "productos.csv"
+};
+
+/* ============================================================ */
+const $ = s => document.querySelector(s);
+const fmt = n => "$" + Math.round(n).toLocaleString("es-AR");
+const num = v => Number(String(v).replace(/[^\d,.-]/g,"").replace(/\./g,"").replace(",", ".")) || 0;
+let grupos = [], variantes = {}, filtroCat = "Todos", carrito = {};
+
+try { carrito = JSON.parse(localStorage.getItem("hf_carrito") || "{}") || {}; } catch(e){ carrito = {}; }
+function guardar(){ try { localStorage.setItem("hf_carrito", JSON.stringify(carrito)); } catch(e){} }
+
+// Lector de CSV que respeta comillas (descripciones con comas, etc.)
+function parseCSV(txt){
+  const filas=[]; let fila=[], campo="", q=false;
+  for(let i=0;i<txt.length;i++){
+    const c=txt[i];
+    if(q){
+      if(c==='"'){ if(txt[i+1]==='"'){campo+='"';i++;} else q=false; }
+      else campo+=c;
+    } else if(c==='"') q=true;
+    else if(c===','){ fila.push(campo); campo=""; }
+    else if(c==='\n'||c==='\r'){
+      if(c==='\r'&&txt[i+1]==='\n') i++;
+      fila.push(campo); filas.push(fila); fila=[]; campo="";
+    } else campo+=c;
+  }
+  if(campo!==""||fila.length){ fila.push(campo); filas.push(fila); }
+  const enc = filas.shift().map(h=>h.trim().toLowerCase());
+  return filas.filter(f=>f.some(v=>v.trim()!=="")).map(f=>Object.fromEntries(enc.map((h,i)=>[h,(f[i]||"").trim()])));
+}
+
+// Acepta links de Google Drive "compartidos" y los convierte en imagen directa
+function img(url){
+  if(!url) return "";
+  const m = url.match(/\/d\/([\w-]{20,})/) || url.match(/[?&]id=([\w-]{20,})/);
+  if(url.includes("drive.google.com") && m) return "https://lh3.googleusercontent.com/d/"+m[1]+"=w600";
+  // Links que ya vienen convertidos desde la planilla: pedirlos achicados si no traen tamaño
+  if(/^https:\/\/lh3\.googleusercontent\.com\/d\/[\w-]+$/.test(url)) return url+"=w600";
+  return url;
+}
+const si = v => /^(si|sí|true|1|x)$/i.test(String(v).trim());
+function esc(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function rango(vs){
+  const ps = vs.map(v=>v.precio).filter(p=>p>0);
+  if(!ps.length) return "Consultar";
+  const mn=Math.min(...ps), mx=Math.max(...ps);
+  return mn===mx ? fmt(mn) : "Desde " + fmt(mn);
+}
+// Talles numéricos de menor a mayor; letras en orden XS…XXL
+const LETRAS = ["XXS","XS","S","M","L","XL","XXL","XXXL"];
+function ordenTalle(a,b){
+  const na=parseFloat(a), nb=parseFloat(b);
+  if(!isNaN(na)&&!isNaN(nb)) return na-nb;
+  const ia=LETRAS.indexOf(a.toUpperCase()), ib=LETRAS.indexOf(b.toUpperCase());
+  if(ia>=0&&ib>=0) return ia-ib;
+  return a.localeCompare(b,"es");
+}
+// Opciones que puede tener un producto. Cada una es una columna de la planilla.
+const CAMPOS = [
+  { k:"talle",        t:"Talle" },
+  { k:"color",        t:"Color" },
+  { k:"presentacion", t:"Presentación" }
+];
+const etiqueta = v => [v.talle && "Talle "+v.talle, v.color, v.presentacion].filter(Boolean).join(" / ");
+
+/* Cada fila de la planilla es una variante (talle + color).
+   Las filas con el mismo "producto" se muestran juntas en una sola tarjeta. */
+async function cargar(){
+  const fuente = CONFIG.sheetCsvUrl || CONFIG.csvLocal;
+  try{
+    const r = await fetch(fuente + (fuente.includes("?")?"&":"?") + "t=" + Date.now());
+    if(!r.ok) throw new Error(r.status);
+    const mapa = new Map();
+    parseCSV(await r.text()).forEach(f=>{
+      const key = f.producto || f.id;
+      if(!key || /^no$/i.test(f.visible||"si")) return;
+      if(!mapa.has(key)) mapa.set(key,{key,nombre:"",categoria:"",descripcion:"",imagen:"",destacado:false,variantes:[]});
+      const g = mapa.get(key);
+      g.nombre ||= f.nombre; g.categoria ||= f.categoria; g.descripcion ||= f.descripcion;
+      g.imagen ||= img(f.imagen_url); if(si(f.destacado)) g.destacado = true;
+      g.variantes.push({ id:f.id||key, talle:f.talle||"", color:f.color||"", presentacion:f.presentacion||"", precio:num(f.precio),
+        stock:!/^no$/i.test(f.hay_stock||"si"), imagen:img(f.imagen_url) });
+    });
+    grupos = [...mapa.values()].filter(g=>g.nombre).map(g=>{
+      g.categoria ||= "Otros";
+      g.op = {};
+      CAMPOS.forEach(({k})=>{ g.op[k] = [...new Set(g.variantes.map(v=>v[k]).filter(Boolean))]; });
+      g.op.talle.sort(ordenTalle);
+      g.stock = g.variantes.some(v=>v.stock);
+      return g;
+    }).sort((a,b)=> (b.destacado-a.destacado) || a.nombre.localeCompare(b.nombre,"es"));
+    variantes = {};
+    grupos.forEach(g=>g.variantes.forEach(v=>{ variantes[v.id] = Object.assign({grupo:g}, v); }));
+    // limpiar del carrito variantes que ya no existen
+    Object.keys(carrito).forEach(id=>{ if(!variantes[id]) delete carrito[id]; });
+    guardar(); pintarChips(); pintar(); pintarCarrito();
+  }catch(e){
+    $("#grilla").innerHTML = '<div class="vacio">No pudimos cargar los productos. Probá recargar la página.</div>';
+  }
+}
+
+function pintarChips(){
+  const cats = ["Todos", ...new Set(grupos.map(g=>g.categoria))];
+  $("#chips").innerHTML = cats.map(c=>`<button class="chip ${c===filtroCat?"on":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("");
+}
+
+function selector(g, campo, lista, titulo){
+  if(!lista.length) return "";
+  // Una sola opción: se muestra como dato fijo, no hace falta elegir
+  if(lista.length===1) return `<div class="opt">${titulo}<span class="fijo">${esc(lista[0])}</span></div>`;
+  const ops = lista.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("");
+  return `<label class="opt">${titulo}<select data-sel="${campo}"><option value="">Elegí…</option>${ops}</select></label>`;
+}
+
+// Deja habilitadas sólo las opciones que forman una combinación que existe,
+// y marca "(sin stock)" las que existen pero están agotadas.
+function refrescarOpciones(art, g, elegido){
+  CAMPOS.forEach(({k})=>{
+    const sel = art.querySelector(`[data-sel="${k}"]`); if(!sel) return;
+    [...sel.options].forEach(op=>{
+      if(!op.value) return;
+      const vs = g.variantes.filter(v => v[k]===op.value &&
+        CAMPOS.every(o => o.k===k || !elegido[o.k] || v[o.k]===elegido[o.k]));
+      op.disabled = !vs.length;
+      op.textContent = op.value + (vs.length && !vs.some(v=>v.stock) ? " (sin stock)" : "");
+    });
+  });
+}
+
+function pintar(){
+  const q = $("#buscar").value.trim().toLowerCase();
+  const lista = grupos.filter(g =>
+    (filtroCat==="Todos"||g.categoria===filtroCat) &&
+    (!q || [g.nombre,g.descripcion,g.categoria,...CAMPOS.flatMap(o=>g.op[o.k])].join(" ").toLowerCase().includes(q)));
+  if(!lista.length){ $("#grilla").innerHTML='<div class="vacio">No encontramos productos con ese filtro.</div>'; return; }
+  $("#grilla").innerHTML = lista.map(g=>`
+    <article class="prod" data-g="${esc(g.key)}">
+      <div class="foto">
+        ${g.imagen?`<img src="${esc(g.imagen)}" alt="${esc(g.nombre)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'sin',textContent:'🐾'}))">`:'<span class="sin">🐾</span>'}
+        ${!g.stock?'<span class="badge agotado">Sin stock</span>':g.destacado?'<span class="badge">Destacado</span>':""}
+      </div>
+      <div class="info">
+        <span class="cat">${esc(g.categoria)}</span>
+        <h3>${esc(g.nombre)}</h3>
+        ${g.descripcion?`<p class="desc">${esc(g.descripcion)}</p>`:""}
+        <div class="opciones">${CAMPOS.map(o=>selector(g,o.k,g.op[o.k],o.t)).join("")}</div>
+        <div class="precio"></div>
+        <div class="acciones">
+          <button class="btn btn-add" data-add>Agregar</button>
+          <button class="btn btn-ws" data-ws title="Consultar por WhatsApp">💬</button>
+        </div>
+      </div>
+    </article>`).join("");
+  document.querySelectorAll(".prod").forEach(actualizar);
+}
+
+// Qué variante quedó elegida en una tarjeta
+function elegida(art){
+  const g = grupos.find(x=>x.key===art.dataset.g);
+  const elegido = {};
+  CAMPOS.forEach(({k})=>{
+    const lista = g.op[k];
+    elegido[k] = art.querySelector(`[data-sel="${k}"]`)?.value || (lista.length===1 ? lista[0] : "");
+  });
+  const cand = g.variantes.filter(v => CAMPOS.every(o => !elegido[o.k] || v[o.k]===elegido[o.k]));
+  const falta = CAMPOS.find(o => g.op[o.k].length && !elegido[o.k]);
+  return { g, elegido, cand, falta, v: falta ? null : cand[0] };
+}
+
+function actualizar(art){
+  const { g, elegido, cand, falta, v } = elegida(art);
+  refrescarOpciones(art, g, elegido);
+  const btn = art.querySelector("[data-add]"), foto = art.querySelector(".foto img");
+  art.querySelector(".precio").textContent = v ? (v.precio?fmt(v.precio):"Consultar") : rango(cand.length?cand:g.variantes);
+  let txt = "Agregar", off = false;
+  if(!g.stock){ txt="Sin stock"; off=true; }
+  else if(falta){ txt = "Elegí " + falta.t.toLowerCase(); off=true; }
+  else if(!v){ txt="No disponible"; off=true; }
+  else if(!v.stock){ txt="Sin stock"; off=true; }
+  btn.textContent = txt; btn.disabled = off;
+  if(foto){ const src = (v&&v.imagen) || g.imagen; if(foto.getAttribute("src")!==src) foto.src = src; }
+}
+
+function pintarCarrito(){
+  const ids = Object.keys(carrito).filter(id=>variantes[id]);
+  $("#contador").textContent = ids.reduce((s,id)=>s+carrito[id],0);
+  let total = 0;
+  $("#items").innerHTML = ids.length ? ids.map(id=>{
+    const v = variantes[id], g = v.grupo, foto = v.imagen||g.imagen;
+    total += v.precio*carrito[id];
+    return `<div class="item">
+      ${foto?`<img src="${esc(foto)}" alt="">`:'<span class="mini">🐾</span>'}
+      <div><h4>${esc(g.nombre)}</h4>${etiqueta(v)?`<span class="var">${esc(etiqueta(v))}</span>`:""}<span class="p">${v.precio?fmt(v.precio)+" c/u":"Precio a consultar"}</span></div>
+      <div class="cant"><button data-menos="${esc(id)}" aria-label="Quitar uno">−</button><span>${carrito[id]}</span><button data-mas="${esc(id)}" aria-label="Agregar uno">+</button></div>
+    </div>`;
+  }).join("") : '<p class="vacio">Todavía no agregaste productos.</p>';
+  $("#total").textContent = fmt(total);
+  $("#pedir").disabled = !ids.length;
+}
+
+function sumar(id,d){
+  carrito[id] = (carrito[id]||0)+d;
+  if(carrito[id]<=0) delete carrito[id];
+  guardar(); pintarCarrito();
+}
+function toast(t){ const el=$("#toast"); el.textContent=t; el.classList.add("on"); clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove("on"),1600); }
+function abrir(on){ $("#panel").classList.toggle("on",on); $("#velo").classList.toggle("on",on); }
+function wa(texto){ window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(texto),"_blank"); }
+
+function enviarPedido(){
+  const lineas = []; let total = 0, hayConsultar = false;
+  Object.keys(carrito).forEach(id=>{
+    const v = variantes[id]; if(!v) return;
+    const sub = v.precio*carrito[id]; total += sub; if(!v.precio) hayConsultar = true;
+    const det = etiqueta(v);
+    lineas.push(`• ${carrito[id]} x ${v.grupo.nombre}${det?" ("+det+")":""} [${v.id}]` + (v.precio?` — ${fmt(sub)}`:" — a consultar"));
+  });
+  const nombre = $("#nombre").value.trim();
+  const msg = [
+    "¡Hola Hocicos Felices! 🐾 Quiero hacer este pedido:", "",
+    ...lineas, "",
+    `*Total: ${fmt(total)}*` + (hayConsultar?" (+ productos a consultar)":""),
+    `Entrega: ${$("#entrega").value}`,
+    nombre?`Nombre: ${nombre}`:""
+  ].filter((l,i,a)=>l!==""||a[i-1]!=="").join("\n");
+  wa(msg);
+}
+
+// Eventos
+$("#grilla").addEventListener("change",e=>{ const art=e.target.closest(".prod"); if(art) actualizar(art); });
+$("#grilla").addEventListener("click",e=>{
+  const art = e.target.closest(".prod"); if(!art) return;
+  if(e.target.closest("[data-add]")){
+    const { v } = elegida(art);
+    if(v && v.stock){ sumar(v.id,1); toast("Agregado al pedido ✓"); }
+  }
+  if(e.target.closest("[data-ws]")){
+    const { g, v } = elegida(art);
+    wa(`¡Hola! Quería consultar por: ${g.nombre}` + (v && etiqueta(v) ? ` (${etiqueta(v)}) [${v.id}]` : ""));
+  }
+});
+$("#items").addEventListener("click",e=>{
+  const m=e.target.closest("[data-mas]"), n=e.target.closest("[data-menos]");
+  if(m) sumar(m.dataset.mas,1); if(n) sumar(n.dataset.menos,-1);
+});
+$("#chips").addEventListener("click",e=>{ const c=e.target.closest("[data-cat]"); if(c){ filtroCat=c.dataset.cat; pintarChips(); pintar(); }});
+$("#buscar").addEventListener("input",pintar);
+$("#abrirCarrito").onclick=()=>abrir(true);
+$("#cerrarCarrito").onclick=()=>abrir(false);
+$("#velo").onclick=()=>abrir(false);
+$("#pedir").onclick=enviarPedido;
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") abrir(false); });
+
+cargar();
+</script>
 </body>
 </html>
